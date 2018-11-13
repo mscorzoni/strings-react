@@ -32,7 +32,7 @@ const { admin } = require('./middleware/admin');
 // /articles?sortBy=createdAt&order=desc&limit=4
 
 // BY SELL
-// /articles?sortBy=sold&order=desc&limit=100&skip=5
+// /articles?sortBy=sold&order=desc&limit=100
 app.get('/api/product/articles',(req,res)=>{
 
     let order = req.query.order ? req.query.order : 'asc';
