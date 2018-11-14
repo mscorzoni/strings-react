@@ -11,7 +11,7 @@ const Footer = () => {
         <footer className="bck_b_dark">
             <div className="container">
                 <div className="logo">
-                    Waves
+                    Strings
                 </div>
                 <div className="wrapper">
                     <div className="left">
