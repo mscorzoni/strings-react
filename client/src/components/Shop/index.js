@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import PageTop from '../utils/page_top';
 
-import { frets } from '../utils/Form/fixed_categories';
+import { frets, price } from '../utils/Form/fixed_categories';
 
 import { connect } from 'react-redux';
 import { getBrands, getWoods } from '../../actions/products_actions';
 
 import CollapseCheckbox from '../utils/collapseCheckbox';
+import CollapseRadio from '../utils/collapseRadio';
 
 class Shop extends Component {
 
@@ -39,7 +40,6 @@ class Shop extends Component {
   render() {
     console.log(this.state.filters)
     const products = this.props.products;
-    
     return (
       <div>
         <PageTop
@@ -61,10 +61,16 @@ class Shop extends Component {
                 handleFilters={(filters) => this.handleFilters(filters, 'frets')}
               />
               <CollapseCheckbox
-                initState={true}
+                initState={false}
                 title="Wood"
                 list={products.woods}
                 handleFilters={(filters) => this.handleFilters(filters, 'wood')}
+              />
+              <CollapseRadio
+                initState={true}
+                title="Price"
+                list={price}
+                handleFilters={(filters) => this.handleFilters(filters, 'price')}
               />
             </div>
             <div className="right">
