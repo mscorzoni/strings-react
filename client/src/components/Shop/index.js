@@ -28,9 +28,26 @@ class Shop extends Component {
     this.props.dispatch(getWoods());
   }
 
+  handlePrice = () => {
+    const data = price;
+    let array = [];
+
+    for(let key in data){
+      if(data[key]._id === parseInt(array, 10)){
+        array = data[key].array
+      }
+    }
+    return array;
+  }
+
   handleFilters = (filters, category) => {
     const newFilters = {...this.state.filters}
     newFilters[category] = filters;
+
+    if(category === "price" ){
+      let priceValues = this.handlePrice(filters);
+      newFilters[category] = priceValues
+    }
 
     this.setState({
       filters: newFilters

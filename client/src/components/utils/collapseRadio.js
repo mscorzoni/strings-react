@@ -59,8 +59,9 @@ class CollapseRadio extends Component {
     null
   )
 
-  onHandleChange = () => {
-
+  onHandlerChange = event => {
+    this.props.handleFilters(event.target.value)
+    this.setState({value: event.target.value})
   }
 
   render() {
@@ -76,15 +77,11 @@ class CollapseRadio extends Component {
           </ListItem>
           <Collapse in={this.state.open} timeout="auto" unmountOnExit>
             <List component="div" disablePadding>
-              <ListItemText
-                primary={this.props.title}
-                className="collapse_title"
-              />
               <RadioGroup
                 aria-label="prices"
                 name="prices"
                 value={this.state.value}
-                onChange={this.handleChange}
+                onChange={this.onHandlerChange}
               >
                 {this.renderList()}
               </RadioGroup>
