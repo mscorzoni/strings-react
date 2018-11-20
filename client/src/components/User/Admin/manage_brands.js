@@ -3,7 +3,7 @@ import FormField from '../../utils/Form/formfield';
 import { update, generateData, isFormValid, resetFields } from '../../utils/Form/formActions';
 
 import { connect } from 'react-redux';
-import { getBrands} from '../../../actions/products_actions';
+import { getBrands, addBrand } from '../../../actions/products_actions';
 
 class ManageBrands extends Component {
 
@@ -48,14 +48,30 @@ class ManageBrands extends Component {
     })
   }
 
+  resetFieldsHander = () => {
+    const newFormData = resetFields(this.state.formdata, 'brands');
+
+    this.setState({
+      formdata: newFormData,
+      formSuccess: true
+    });
+  }
+
   submitForm = (event) => {
     event.preventDefault();
 
     let dataToSubmit = generateData(this.state.formdata, 'brands');
-    let formIsValid = isFormValid(this.state.formdata, 'brands')
+    let formIsValid = isFormValid(this.state.formdata, 'brands');
+    let existingBrands = this.props.products.brands;
 
     if (formIsValid) {
-     
+      this.props.dispatch(addBrand(dataToSubmit, existingBrands)).then(response => {
+        if(response.payload.success){
+          this.resetFields();
+        } else {
+          this.setState({formError: true})
+        }
+      })
     } else {
       this.setState({
         formError: true
