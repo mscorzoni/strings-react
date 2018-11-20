@@ -11,7 +11,7 @@ const Footer = () => {
         <footer className="bck_b_dark">
             <div className="container">
                 <div className="logo">
-                    Waves
+                    Strings
                 </div>
                 <div className="wrapper">
                     <div className="left">
@@ -24,7 +24,7 @@ const Footer = () => {
                                 />
                                 <div className="nfo">
                                     <div>Address</div>
-                                    <div>Kramer 2345</div>
+                                    <div>Surrey Quays Road, 2323</div>
                                 </div>
                             </div>
                             <div className="tag">
@@ -34,7 +34,7 @@ const Footer = () => {
                                 />
                                 <div className="nfo">
                                     <div>Phone</div>
-                                    <div>2345-22222</div>
+                                    <div>7777-2233</div>
                                 </div>
                             </div>
                             <div className="tag">
@@ -54,7 +54,7 @@ const Footer = () => {
                                 />
                                 <div className="nfo">
                                     <div>Email</div>
-                                    <div>nfo@waves.com</div>
+                                    <div>donotreply@strings.com</div>
                                 </div>
                             </div>
                         </div>
