@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import UserLayout from '../../hoc/user';
-import { connect } from 'react-redux';
+import UserProductBlock from  '../utils/User/product_block';
 
+import { connect } from 'react-redux';
 import { getCartItems } from '../../actions/user_actions';
 import FontAwesomeIcon  from '@fortawesome/react-fontawesome';
 import faFrown from '@fortawesome/fontawesome-free-solid/faFrown';
@@ -17,7 +18,7 @@ class UserCart extends Component {
   }
 
   componentDidMount(){
-    let cartItem = [];
+    let cartItems = [];
     let user = this.props.user;
 
     if(user.userData.cart){
@@ -26,19 +27,30 @@ class UserCart extends Component {
           cartItem.push(item.id)
         });
 
-        this.props.dispatch(getCartItems(cartItem, user.userData.cart))
+        this.props.dispatch(getCartItems(cartItems, user.userData.cart))
           .then(() => {
-            
+
           })
       }
     }
+  }
+
+  removeFromCart = () => {
+
   }
 
   render() {
     return (
       <UserLayout>
         <div>
-          Cart
+          <h1>My cart</h1>
+          <div className="user_cart">
+            <UserProductBlock
+                products={this.props.user}
+                type="cart"
+                removeItem={(id) => this.removeFromCart(id)}
+            />
+          </div>
         </div>
       </UserLayout>
     );
